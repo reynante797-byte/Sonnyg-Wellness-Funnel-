@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wellness Funnel PRO</title>
+<style>
+body{margin:0;font-family:'Segoe UI', Roboto, Arial;background:#eef5f1;color:#222;}
+.container{max-width:900px;margin:auto;padding:20px;}
+.header{background:linear-gradient(135deg,#1b5e20,#43a047);color:white;padding:25px;border-radius:12px;text-align:center;animation:fadeIn 1s;}
+.section{background:white;margin-top:15px;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);animation:fadeInUp 0.8s;}
+.btn{display:block;width:100%;padding:15px;background:#1b5e20;color:white;text-align:center;border:none;border-radius:10px;font-size:16px;margin-top:10px;cursor:pointer;transition:0.3s;}
+.btn:hover{background:#2e7d32;transform:scale(1.05);} 
+input,textarea{width:100%;padding:10px;margin:10px 0;border-radius:8px;border:1px solid #ccc;}
+label{font-weight:bold;}
+.chat-bubble{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:12px 16px;border-radius:50px;cursor:pointer;}
+.timer{background:#000;color:#fff;padding:10px;border-radius:8px;text-align:center;margin-bottom:10px;font-weight:bold;}
+.popup{position:fixed;bottom:80px;left:20px;background:white;padding:10px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.2);display:none;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body><div class="container"><div class="header">
+<h1>Start Your Health & Income Journey Today</h1>
+<p>Join a growing community using Barley for wellness & extra income</p>
+</div><div class="section">
+<div class="timer" id="timer">Limited Offer: 05:00</div><p style="font-weight:bold;text-align:center;">KUNG NAGHAHANAP KA NG MAGANDANG BUSINESS SA 2026 NA PWEDENG GUMANDA ANG BUHAY MO? ANG OPORTUNIDAD NA ITO AY PARA SA'YO*<br/><br/>
+*Sa Halagang 1,998 pesos ay may Business kana na pwedeng kumita ka ng tuloy-tuloy depende sa sipag mo..
+</p>..</p><iframe width="100%" height="315" src="https://www.youtube.com/embed/2mcu38ZYWLk" frameborder="0" allowfullscreen></iframe>
+<p style="text-align:center;">â–¶ Play The Next Video For Income Opportunity</p><iframe width="100%" height="315" src="https://www.youtube.com/embed/emHfRlmz8DU" frameborder="0" allowfullscreen></iframe>
+<button class="btn" onclick="goOrder()">I Want To Start Now</button><iframe width="100%" height="315" src="https://www.youtube.com/embed/ulWmN-wNBU8" frameborder="0" allowfullscreen></iframe>
+<button class="btn" onclick="goOrder()">I Want To Start Now</button>
+</div><div id="order" class="section" style="display:none;">
+<h2>Order Now</h2>
+<label>Full Name</label>
+<input type="text" />
+<label>Complete Address</label>
+<textarea></textarea>
+<label>Email Address</label>
+<input type="email" />
+<label>Contact Number</label>
+<input type="text" />
+<p><b>â‚±2,098 (â‚±1,998 + â‚±100 shipping)</b></p>
+<p>GCash: 09071121528</p>
+<label>Upload Receipt</label>
+<input type="file" />
+<button class="btn" onclick="submitOrder()">Submit Order</button>
+</div><div id="popup" class="popup">Someone just placed an order ðŸ”¥</div></div><div class="chat-bubble" onclick="openMessenger()">Chat with Admin</div><script>
+function goOrder(){
+ document.getElementById('order').style.display='block';
+ window.scrollTo({top:document.getElementById('order').offsetTop,behavior:'smooth'});
+}
+
+function submitOrder(){
+ alert('Order Submitted!');
+}
+
+function openMessenger(){
+ window.open('https://m.me/sgalvadores.me','_blank');
+}
+
+// Timer Countdown
+let time=300;
+setInterval(()=>{
+ let min=Math.floor(time/60);
+ let sec=time%60;
+ document.getElementById('timer').innerText=`Limited Offer: ${min}:${sec<10?'0':''}${sec}`;
+ if(time>0) time--;
+},1000);
+
+// Fake Popup
+setInterval(()=>{
+ let pop=document.getElementById('popup');
+ pop.style.display='block';
+ setTimeout(()=>{pop.style.display='none';},3000);
+},8000);
+</script></body>
+</html>
