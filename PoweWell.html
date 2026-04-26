@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wellness Funnel PRO</title>
+
+<style>
+body{margin:0;font-family:'Segoe UI', Roboto, Arial;background:#eef5f1;color:#222;}
+.container{max-width:900px;margin:auto;padding:20px;}
+.header{background:linear-gradient(135deg,#1b5e20,#43a047);color:white;padding:25px;border-radius:12px;text-align:center;}
+.section{background:white;margin-top:15px;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+.btn{display:block;width:100%;padding:15px;background:#1b5e20;color:white;border:none;border-radius:10px;font-size:16px;margin-top:10px;cursor:pointer;}
+input,textarea{width:100%;padding:10px;margin:10px 0;border-radius:8px;border:1px solid #ccc;}
+.chat-bubble{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:12px 16px;border-radius:50px;cursor:pointer;}
+.gcash{display:none;text-align:center;margin-top:10px;font-weight:bold;}
+.payment{border:2px dashed #1b5e20;padding:10px;text-align:center;border-radius:8px;cursor:pointer;}
+.testimonial{background:#f1f8e9;padding:15px;border-radius:10px;margin-top:10px;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<h1>Start Your Health & Income Journey Today</h1>
+FOR ONLY 1,998 
+<p>KUNG NAGHAHANAP KA NG MAGANDANG BUSINESS NGAYON 2026...</p>
+</div>
+
+<div class="section">
+
+<iframe width="100%" height="250" src="https://www.youtube.com/embed/ulWmN-wNBU8" allowfullscreen></iframe>
+<p style="text-align:center;">Play The Next Video</p>
+
+<iframe width="100%" height="250" src="https://www.youtube.com/embed/emHfRlmz8DU" allowfullscreen></iframe>
+
+<button class="btn" onclick="goOrder()">JOIN AKO I WANT TO START NOW</button>
+
+</div>
+
+<!-- TESTIMONIAL -->
+<div class="section">
+<h2 style="text-align:center;">ðŸ’¬ Mga Success Stories</h2>
+
+<div class="testimonial">â€œGrabe, after 1 week may first income na ako! ðŸ™â€<br><b>- Maria L.</b></div>
+<div class="testimonial">â€œDati duda ako pero legit pala. Worth it ðŸ’¯â€<br><b>- John P.</b></div>
+<div class="testimonial">â€œBeginner friendly! Step-by-step guide.â€<br><b>- Karen D.</b></div>
+
+</div>
+
+<!-- ORDER FORM -->
+<div id="order" class="section" style="display:none;">
+
+<h2>Order Now</h2>
+
+<input id="name" type="text" placeholder="Full Name">
+<textarea id="address" placeholder="Complete Address"></textarea>
+<input id="barangay" type="text" placeholder="Barangay">
+<input id="province" type="text" placeholder="Province">
+<input id="email" type="email" placeholder="Email Address">
+<input id="contact" type="text" placeholder="Contact Number">
+
+<p><b>Total price: 1,998 + 100 shipping = 2,098</b></p>
+
+<div class="payment" onclick="toggleGCash()">Tap to View Mode of Payment</div>
+
+<div class="gcash" id="gcashBox">
+GCash: 09106431912<br>
+Name: Santos Galvadores
+</div>
+
+<label>Upload Receipt</label>
+<input type="file" accept="image/*" onchange="previewImage(event)">
+<img id="preview" style="width:100%;margin-top:10px;display:none;border-radius:8px;">
+
+<p style="font-size:13px;text-align:center;color:red;">
+After clicking submit, click SEND in Messenger and attach your screenshot
+</p>
+
+<button class="btn" onclick="validateAndSend()">Submit Order</button>
+
+</div>
+
+</div>
+
+<div class="chat-bubble" onclick="openMessenger()">Chat with Admin</div>
+
+<script>
+
+function goOrder(){
+ document.getElementById('order').style.display='block';
+ window.scrollTo({top:document.getElementById('order').offsetTop,behavior:'smooth'});
+}
+
+function toggleGCash(){
+ let box=document.getElementById("gcashBox");
+ box.style.display = (box.style.display === "block") ? "none" : "block";
+}
+
+function previewImage(event){
+ let reader = new FileReader();
+ reader.onload = function(){
+   let output = document.getElementById('preview');
+   output.src = reader.result;
+   output.style.display = 'block';
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+
+/* ðŸ”¥ TRACKING SYSTEM */
+const params = new URLSearchParams(window.location.search);
+const source = params.get("src") || "organic";
+
+function validateAndSend(){
+
+ let name=document.getElementById("name").value;
+ let address=document.getElementById("address").value;
+ let barangay=document.getElementById("barangay").value;
+ let province=document.getElementById("province").value;
+ let email=document.getElementById("email").value;
+ let contact=document.getElementById("contact").value;
+
+ if(name===""||address===""||barangay===""||province===""||email===""||contact===""){
+   alert("Please fill out all fields first!");
+   return;
+ }
+
+ let message="Hi! New Order\n"
+ +"Source: "+source+"\n"
+ +"Name: "+name+"\n"
+ +"Address: "+address+"\n"
+ +"Barangay: "+barangay+"\n"
+ +"Province: "+province+"\n"
+ +"Email: "+email+"\n"
+ +"Contact: "+contact+"\n"
+ +"Total: 2,098\n"
+ +"(Kindly attach screenshot)";
+
+ let url="https://m.me/sgtutsblog?text="+encodeURIComponent(message);
+
+ window.location.href=url;
+}
+
+function openMessenger(){
+ window.open("https://m.me/sgtutsblog","_blank");
+}
+
+</script>
+
+</body>
+</html>
